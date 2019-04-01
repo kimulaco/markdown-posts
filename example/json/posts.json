@@ -3,21 +3,16 @@
     "id": "post-01",
     "path": "example/src/post-01",
     "main": "example/src/post-01/README.md",
-    "meta": {
-      "title": "Welcome to Markdown-it-meta",
-      "description": "test post",
-      "created_at": "2019-04-01",
-      "updated_at": "2019-04-01",
-      "tags": [
-        "HTML",
-        "CSS",
-        "JavaScript"
-      ]
-    },
-    "body": {
-      "md": "---\r\ntitle: Welcome to Markdown-it-meta\r\ndescription: test post\r\ncreated_at: \"2019-04-01\"\r\nupdated_at: \"2019-04-01\"\r\ntags:\r\n    - HTML\r\n    - CSS\r\n    - JavaScript\r\n---\r\n\r\n## post-01\r\n",
-      "html": "<h2>post-01</h2>\n"
-    },
+    "title": "Welcome to Markdown-it-meta",
+    "description": "test post",
+    "created_at": "2019-04-01",
+    "updated_at": "2019-04-01",
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "body": "<h2>post-01</h2>\n",
     "resource": [
       "example/src/post-01/example.png"
     ]
@@ -26,42 +21,14 @@
     "id": "post-02",
     "path": "example/src/post-02",
     "main": "example/src/post-02/README.md",
-    "meta": {
-      "title": "Welcome to Markdown-it-meta",
-      "description": "test post",
-      "created_at": "2019-04-01",
-      "updated_at": "2019-04-01",
-      "tags": [
-        "HTML",
-        "CSS",
-        "JavaScript"
-      ]
-    },
-    "body": {
-      "md": "# post-02\r\n",
-      "html": "<h1>post-02</h1>\n"
-    },
+    "body": "<h1>post-02</h1>\n",
     "resource": []
   },
   {
     "id": "post-03",
     "path": "example/src/post-03",
     "main": "example/src/post-03/README.md",
-    "meta": {
-      "title": "Welcome to Markdown-it-meta",
-      "description": "test post",
-      "created_at": "2019-04-01",
-      "updated_at": "2019-04-01",
-      "tags": [
-        "HTML",
-        "CSS",
-        "JavaScript"
-      ]
-    },
-    "body": {
-      "md": "# post-03\r\n",
-      "html": "<h1>post-03</h1>\n"
-    },
+    "body": "<h1>post-03</h1>\n",
     "resource": []
   }
 ]

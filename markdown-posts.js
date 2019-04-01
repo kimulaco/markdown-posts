@@ -19,9 +19,6 @@ class MarkdownPosts {
                 html: true
             }
         }, option || {});
-        this.md = new MarkdownIt(this.option.markdownIt);
-
-        this.md.use(meta)
     }
 
     async generate() {
@@ -45,22 +42,29 @@ class MarkdownPosts {
         const postPath = path.join(this.option.src, postName);
         const mainPath = path.join(postPath, this.option.main);
         const md = fs.readFileSync(mainPath).toString();
-        const html = this.md.render(md);
+        const mdParser = this.initMdParser();
+
+        const html = mdParser.render(md);
 
         return {
             id: postName,
             path: postPath,
             main: mainPath,
-            meta: this.md.meta,
-            body: {
-                md: md,
-                html: html
-            },
+            ...mdParser.meta,
+            body: html,
             resource: await this.getResource(postPath, [
                 postPath,
                 mainPath
             ])
         };
+    }
+
+    initMdParser() {
+        const mdParser = new MarkdownIt(this.option.markdownIt);
+
+        mdParser.use(meta);
+
+        return mdParser;
     }
 
     writeFile(filePath, data) {

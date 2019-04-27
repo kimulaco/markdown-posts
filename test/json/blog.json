@@ -1,8 +1,8 @@
 {
   "posts": [
     {
-      "path": "example/src/post-01",
-      "main": "example/src/post-01/README.md",
+      "path": "test/src/post-01",
+      "main": "test/src/post-01/index.md",
       "id": "post-01",
       "title": "Welcome to Markdown-it-meta",
       "description": "test post",
@@ -15,12 +15,12 @@
       ],
       "body": "<h2>post-01</h2>\n",
       "resource": [
-        "example/src/post-01/example.png"
+        "test/src/post-01/example.png"
       ]
     },
     {
-      "path": "example/src/post-02",
-      "main": "example/src/post-02/README.md",
+      "path": "test/src/post-02",
+      "main": "test/src/post-02/index.md",
       "id": "post-02",
       "title": "Welcome to Markdown-it-meta",
       "description": "test post2",
@@ -35,8 +35,8 @@
       "resource": []
     },
     {
-      "path": "example/src/post-03",
-      "main": "example/src/post-03/README.md",
+      "path": "test/src/post-03",
+      "main": "test/src/post-03/index.md",
       "id": "post-03",
       "title": "Welcome to Markdown-it-meta",
       "description": "test post",

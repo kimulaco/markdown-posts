@@ -1,0 +1,59 @@
+{
+  "posts": [
+    {
+      "path": "test/src/post-01",
+      "main": "test/src/post-01/index.md",
+      "id": "post-01",
+      "title": "Welcome to Markdown-it-meta",
+      "description": "test post",
+      "created_at": "2019-04-01",
+      "updated_at": "2019-04-01",
+      "tags": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "body": "<h2>post-01</h2>\n",
+      "resource": [
+        "test/src/post-01/example.png"
+      ]
+    },
+    {
+      "path": "test/src/post-02",
+      "main": "test/src/post-02/index.md",
+      "id": "post-02",
+      "title": "Welcome to Markdown-it-meta",
+      "description": "test post2",
+      "created_at": "2019-04-01",
+      "updated_at": "2019-04-01",
+      "tags": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "body": "<h1>post-02</h1>\n",
+      "resource": []
+    },
+    {
+      "path": "test/src/post-03",
+      "main": "test/src/post-03/index.md",
+      "id": "post-03",
+      "title": "Welcome to Markdown-it-meta",
+      "description": "test post",
+      "created_at": "2019-04-01",
+      "updated_at": "2019-04-01",
+      "tags": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "body": "<h1>post-03</h1>\n",
+      "resource": []
+    }
+  ],
+  "tags": [
+    "HTML",
+    "CSS",
+    "JavaScript"
+  ]
+}

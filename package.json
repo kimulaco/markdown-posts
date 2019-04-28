@@ -5,10 +5,15 @@
   "author": "kimulaco",
   "license": "MIT",
   "main": "lib/markdown-post-parser.js",
+  "bin": {
+    "mpp": "bin/index.js"
+  },
   "scripts": {
-    "test": "node test/markdown-post-parser.test.js"
+    "test": "node test/js/markdown-post-parser.test.js",
+    "test:cli": "mpp -m index.md -i ./test/src -o ./test/cli/json/blog.json -s ./test/cli/static"
   },
   "dependencies": {
+    "commander": "^2.20.0",
     "fs-extra": "^7.0.1",
     "glob": "^7.1.3",
     "lodash": "^4.17.11",

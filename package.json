@@ -11,7 +11,7 @@
   "scripts": {
     "test": "node test/js/markdown-post-parser.test.js",
     "test:cli": "mpp -m index.md -i ./test/src -o ./test/cli/json/blog.json -s ./test/cli/static",
-    "lint": "eslint -c standard dist/markdown-post-parser.js"
+    "lint": "eslint dist/**.js bin/**.js test/**/**.js"
   },
   "dependencies": {
     "commander": "^2.20.0",

@@ -9,7 +9,8 @@
     "mpp": "bin/index.js"
   },
   "scripts": {
-    "test": "node test/js/markdown-post-parser.test.js",
+    "test": "npm-run-all -s lint test:*",
+    "test:node": "node test/js/markdown-post-parser.test.js",
     "test:cli": "mpp -m index.md -i ./test/src -o ./test/cli/json/blog.json -s ./test/cli/static",
     "lint": "eslint dist/**.js bin/**.js test/**/**.js"
   },
@@ -27,6 +28,7 @@
     "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-node": "^9.0.1",
     "eslint-plugin-promise": "^4.1.1",
-    "eslint-plugin-standard": "^4.0.0"
+    "eslint-plugin-standard": "^4.0.0",
+    "npm-run-all": "^4.1.5"
   }
 }

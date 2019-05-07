@@ -22,13 +22,18 @@ class MarkdownPosts {
     }, option || {})
   }
 
-  async generate () {
+  async parse () {
     const posts = await this.generatePosts(this.option.input)
     const tags = this.generateTags(posts)
-    const blog = {
+
+    return {
       posts,
       tags
     }
+  }
+
+  async generate () {
+    const blog = await this.parse()
 
     await this.writeFile(this.option.output, JSON.stringify(blog, null, '  '))
   }

@@ -97,8 +97,16 @@ text
   ]
 ```
 
+## Development
+
+```shell
+# Unit test
+npm run test
+```
+
 ## ToDo
 
+- Test code.
 - Copy static resource.
 - Watch option.
 

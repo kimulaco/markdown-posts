@@ -32,7 +32,9 @@
         "JavaScript"
       ],
       "body": "<h1>post-02</h1>\n",
-      "resource": []
+      "resource": [
+        "test/src/post-02/example.png"
+      ]
     },
     {
       "path": "test/src/post-03",
@@ -55,5 +57,9 @@
     "HTML",
     "CSS",
     "JavaScript"
+  ],
+  "resources": [
+    "test/src/post-01/example.png",
+    "test/src/post-02/example.png"
   ]
 }

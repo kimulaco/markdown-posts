@@ -8,10 +8,12 @@ import meta from 'markdown-it-meta'
 type Post = any
 type Posts = Post[]
 type Tags = string[]
+type Resouces = string[]
 
 interface Blog {
   posts: Posts
   tags: Tags
+  resources: Resouces
 }
 
 interface Result {
@@ -50,10 +52,12 @@ class MarkdownPostParser {
   public async parse (): Promise<Blog> {
     const posts: Posts = await this.generatePosts(this.option.input)
     const tags: Tags = this.generateTags(posts)
+    const resources: Resouces = this.generateResouces(posts)
 
     return {
       posts,
-      tags
+      tags,
+      resources
     }
   }
 
@@ -63,6 +67,11 @@ class MarkdownPostParser {
       this.option.output,
       JSON.stringify(blog, null, '  ')
     )
+
+    if (this.option.static) {
+      await fs.emptyDir(this.option.static)
+      await this.copyResource(blog.resources)
+    }
 
     return result
   }
@@ -94,6 +103,16 @@ class MarkdownPostParser {
     this.watcher = null
     process.kill(process.pid, 'SIGHUP')
     process.exit(0)
+  }
+
+  private generateResouces (posts: Posts): string[] {
+    let resources: string[] = []
+
+    posts.forEach((post: Post) => {
+      resources = _.concat(resources, post.resource)
+    })
+
+    return _.uniq(resources)
   }
 
   private generateTags (posts: Posts): Tags {
@@ -155,6 +174,18 @@ class MarkdownPostParser {
         })
       })
     })
+  }
+
+  private async copyResource (resources: Resouces): Promise<void> {
+    const inputDir: string = path.resolve(process.cwd(), this.option.input)
+    const staticDir: string = path.resolve(process.cwd(), this.option.static)
+
+    for (let i: number = 0; i < resources.length; i++) {
+      const srcPath: string = path.resolve(process.cwd(), resources[i])
+      const distPath: string = srcPath.replace(inputDir, staticDir)
+
+      await fs.copy(srcPath, distPath)
+    }
   }
 
   private getResource (dirPath: string, ignores: string[]): Promise<string[]> {

@@ -114,7 +114,6 @@ yarn test
 
 - Test code.
 - Copy static resource.
-- Watch option.
 - Publish npm.
 
 ## License

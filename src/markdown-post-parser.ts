@@ -63,14 +63,18 @@ export default class MarkdownPostParser {
 
   public async generate (): Promise<Result> {
     const blog: Blog = await this.parse()
-    const result: Result = await this.writeFile(this.option.output, blog)
+
+    await fs.outputFile(this.option.output, JSON.stringify(blog, null, '  '))
 
     if (this.option.static) {
       await fs.emptyDir(this.option.static)
       await this.copyResource(blog.resources)
     }
 
-    return result
+    return {
+      path: this.option.output,
+      data: blog
+    }
   }
 
   public watch (): void {
@@ -158,22 +162,6 @@ export default class MarkdownPostParser {
     mdParser.use(meta)
 
     return mdParser
-  }
-
-  private writeFile (filePath: string, data: any): Promise<Result> {
-    return new Promise<Result>((resolve: any, reject: any) => {
-      const writeData = ['string', 'number'].includes(typeof data) ? data
-        : JSON.stringify(data, null, '  ')
-
-      fs.writeFile(filePath, writeData, (error: any) => {
-        if (error) reject(error)
-
-        resolve({
-          path: filePath,
-          data: data
-        })
-      })
-    })
   }
 
   private async copyResource (resources: Resouces): Promise<void> {

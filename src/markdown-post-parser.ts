@@ -33,7 +33,7 @@ interface Option {
  * MarkdownPostParser
  * @constructor
  */
-class MarkdownPostParser {
+export default class MarkdownPostParser {
   private watcher: any = null
   public option: Option = {
     main: 'index.md',
@@ -63,10 +63,7 @@ class MarkdownPostParser {
 
   public async generate (): Promise<Result> {
     const blog: Blog = await this.parse()
-    const result: Result = await this.writeFile(
-      this.option.output,
-      JSON.stringify(blog, null, '  ')
-    )
+    const result: Result = await this.writeFile(this.option.output, blog)
 
     if (this.option.static) {
       await fs.emptyDir(this.option.static)
@@ -165,7 +162,10 @@ class MarkdownPostParser {
 
   private writeFile (filePath: string, data: any): Promise<Result> {
     return new Promise<Result>((resolve: any, reject: any) => {
-      fs.writeFile(filePath, data, (error: any) => {
+      const writeData = ['string', 'number'].includes(typeof data) ? data
+        : JSON.stringify(data, null, '  ')
+
+      fs.writeFile(filePath, writeData, (error: any) => {
         if (error) reject(error)
 
         resolve({

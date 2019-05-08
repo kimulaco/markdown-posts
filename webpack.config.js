@@ -18,7 +18,7 @@ module.exports = {
           'ts-loader',
           'eslint-loader'
         ],
-        exclude: /(node_modules|dist)/
+        exclude: /(node_modules|dist|test)/
       }
     ]
   },

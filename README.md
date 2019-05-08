@@ -124,7 +124,7 @@ yarn test
 
 ## ToDo
 
-- Test code.
+- Enhance test code.
 - Publish npm.
 
 ## License

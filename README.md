@@ -2,28 +2,6 @@
 
 Parser for building blogs in Markdown.
 
-## Install
-
-Add modules to `dependencies`.
-
-```js
-{
-  ...
-  "dependencies": {
-    ...
-    "markdown-post-parser": "git+https://github.com/kimulaco/markdown-post-parser.git",
-    ...
-  }
-  ...
-}
-```
-
-Install the module with `npm` or `yarn`.
-
-```shell
-npm install
-```
-
 ## Use
 
 ### CLI

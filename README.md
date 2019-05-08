@@ -122,11 +122,6 @@ yarn dev
 yarn test
 ```
 
-## ToDo
-
-- Enhance test code.
-- Publish npm.
-
 ## License
 
 [MIT](https://github.com/kimulaco/markdown-post-parser/blob/master/LICENSE)

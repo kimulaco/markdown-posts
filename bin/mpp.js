@@ -24,5 +24,7 @@ const markdownPostParser = new MarkdownPostParser(option)
 if (program.watch) {
   markdownPostParser.watch()
 } else {
-  markdownPostParser.generate()
+  markdownPostParser.generate().then(() => {
+    console.log('Generate completeed')
+  })
 }

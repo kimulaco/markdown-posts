@@ -11,7 +11,7 @@
   "license": "MIT",
   "main": "dist/markdown-post-parser.js",
   "bin": {
-    "mpp": "bin/index.js"
+    "mpp": "bin/mpp.js"
   },
   "scripts": {
     "build": "webpack",

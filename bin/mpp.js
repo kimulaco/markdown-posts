@@ -7,11 +7,11 @@ let option = {}
 
 program
   .version(pkg.version)
-  .option('-w, --watch', 'Watch mode.')
-  .option('-m, --main [value]', 'Main markdown file name.')
-  .option('-i, --input [value]', 'Input directory.')
-  .option('-o, --output [value]', 'Output directory.')
-  .option('-s, --static [value]', 'Output static files directory.')
+  .option('-w, --watch', 'watch mode')
+  .option('-m, --main [value]', 'main markdown file name')
+  .option('-i, --input [value]', 'input directory')
+  .option('-o, --output [value]', 'output directory')
+  .option('-s, --static [value]', 'output static files directory')
   .parse(process.argv)
 
 if (program.main) option.main = program.main

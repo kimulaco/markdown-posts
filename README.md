@@ -2,18 +2,29 @@
 
 Parser for building blogs in Markdown.
 
+## Install
+
+```shell
+npm install --save-dev markdown-post-parser
+```
+
 ## Use
 
 ### CLI
 
 ```shell
+# generate
 mpp -m index.md -i ./src -o ./json/blog.json -s ./static
+
+# watch
+mpp -w -m index.md -i ./src -o ./json/blog.json -s ./static
 ```
 
 ### API
 
 ```js
-const MarkdownPostParser = require('./markdown-post-parser')
+
+const MarkdownPostParser = require('markdown-post-parser')
 const markdownPostParser = new MarkdownPostParser({
   main: 'index.md',
   input: './src',
@@ -21,7 +32,13 @@ const markdownPostParser = new MarkdownPostParser({
   static: './static'
 })
 
-markdownPostParser.generate()
+// generate
+markdownPostParser.generate().then(() => {
+  console.log('Generate completeed')
+})
+
+// watch
+markdownPostParser.watch()
 ```
 
 ## Example
@@ -122,6 +139,12 @@ yarn dev
 yarn test
 ```
 
+## Todos
+
+- Enhance test code
+- Update document
+- CLI design
+
 ## License
 
-[MIT](https://github.com/kimulaco/markdown-post-parser/blob/master/LICENSE)
+[MIT License](https://github.com/kimulaco/markdown-post-parser/blob/master/LICENSE)

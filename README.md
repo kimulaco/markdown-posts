@@ -100,8 +100,14 @@ text
 ## Development
 
 ```shell
+# Build TypeScript
+yarn build
+
+# Development mode
+yarn dev
+
 # Unit test
-npm run test
+yarn test
 ```
 
 ## ToDo

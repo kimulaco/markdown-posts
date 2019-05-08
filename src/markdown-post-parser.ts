@@ -5,8 +5,26 @@ import _ from 'lodash'
 import MarkdownIt from 'markdown-it'
 import meta from 'markdown-it-meta'
 
-const isDir = (filePath: string): boolean => {
-  return fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()
+type Post = any
+type Posts = Post[]
+type Tags = string[]
+
+interface Blog {
+  posts: Posts
+  tags: Tags
+}
+
+interface Result {
+  path: string
+  data: Blog
+}
+
+interface Option {
+  main?: string
+  input?: string
+  output?: string
+  static?: string
+  markdownIt?: any
 }
 
 /**
@@ -14,8 +32,8 @@ const isDir = (filePath: string): boolean => {
  * @constructor
  */
 class MarkdownPostParser {
-  watcher: any = null
-  option: any = {
+  private watcher: any = null
+  public option: Option = {
     main: 'index.md',
     input: 'src',
     output: 'json',
@@ -25,13 +43,13 @@ class MarkdownPostParser {
     }
   }
 
-  constructor (option: any) {
+  constructor (option: Option) {
     this.option = Object.assign(this.option, option || {})
   }
 
-  async parse () {
-    const posts: any = await this.generatePosts(this.option.input)
-    const tags: string[] = this.generateTags(posts)
+  public async parse (): Promise<Blog> {
+    const posts: Posts = await this.generatePosts(this.option.input)
+    const tags: Tags = this.generateTags(posts)
 
     return {
       posts,
@@ -39,9 +57,9 @@ class MarkdownPostParser {
     }
   }
 
-  async generate () {
-    const blog: any = await this.parse()
-    const result: any = await this.writeFile(
+  public async generate (): Promise<Result> {
+    const blog: Blog = await this.parse()
+    const result: Result = await this.writeFile(
       this.option.output,
       JSON.stringify(blog, null, '  ')
     )
@@ -49,7 +67,7 @@ class MarkdownPostParser {
     return result
   }
 
-  watch (): void {
+  public watch (): void {
     console.log('Watch start')
 
     this.watcher = fs.watch(this.option.input, {
@@ -57,7 +75,7 @@ class MarkdownPostParser {
     }, (eventType: string, fileName: string) => {
       if (fileName) {
         console.log(`${eventType} - ${fileName}`)
-        this.generate().then((result) => {
+        this.generate().then((result: Result) => {
           console.log(result.path)
           console.log('')
         })
@@ -69,7 +87,7 @@ class MarkdownPostParser {
     })
   }
 
-  unwatch (error: any): void {
+  public unwatch (error: any): void {
     if (error) console.error(error)
     console.log('Watch stop')
     this.watcher.close()
@@ -78,28 +96,28 @@ class MarkdownPostParser {
     process.exit(0)
   }
 
-  generateTags (posts): string[] {
-    let tags = []
+  private generateTags (posts: Posts): Tags {
+    let tags: Tags = []
 
-    posts.forEach((post) => {
+    posts.forEach((post: Post) => {
       tags = _.union(tags, post.tags)
     })
 
     return tags
   }
 
-  async generatePosts (dirPath: string) {
+  private async generatePosts (dirPath: string): Promise<Posts> {
     const postsDir: any = await this.readPostsDir(dirPath)
-    const posts: any[] = []
+    const posts: Posts = []
 
-    for (let i = 0; i < postsDir.length; i++) {
+    for (let i: number = 0; i < postsDir.length; i++) {
       posts.push(await this.parsePost(postsDir[i]))
     }
 
     return posts
   }
 
-  async parsePost (postDirName) {
+  private async parsePost (postDirName: string): Promise<Post> {
     const postPath: string = path.join(this.option.input, postDirName)
     const mainPath: string = path.join(postPath, this.option.main)
     const md: string = fs.readFileSync(mainPath).toString()
@@ -118,7 +136,7 @@ class MarkdownPostParser {
     }
   }
 
-  initMdParser (): any {
+  private initMdParser (): any {
     const mdParser: any = new MarkdownIt(this.option.markdownIt)
 
     mdParser.use(meta)
@@ -126,8 +144,8 @@ class MarkdownPostParser {
     return mdParser
   }
 
-  writeFile (filePath: string, data: any) {
-    return new Promise((resolve: any, reject: any) => {
+  private writeFile (filePath: string, data: any): Promise<Result> {
+    return new Promise<Result>((resolve: any, reject: any) => {
       fs.writeFile(filePath, data, (error: any) => {
         if (error) reject(error)
 
@@ -139,7 +157,7 @@ class MarkdownPostParser {
     })
   }
 
-  getResource (dirPath: string, ignores: string[]) {
+  private getResource (dirPath: string, ignores: string[]): Promise<string[]> {
     return new Promise((resolve: any, reject: any) => {
       glob(path.join(dirPath, '**/**'), (error: any, files: string[]) => {
         if (error) reject(error)
@@ -153,18 +171,22 @@ class MarkdownPostParser {
     })
   }
 
-  readPostsDir (dirPath: string) {
+  private readPostsDir (dirPath: string): Promise<string[]> {
     return new Promise((resolve: any, reject: any) => {
       fs.readdir(dirPath, (error: any, files: string[]) => {
         if (error) reject(error)
 
         const postsDir = files.filter((file: string) => {
-          return isDir(path.join(dirPath, file))
+          return this.isDir(path.join(dirPath, file))
         })
 
         resolve(postsDir)
       })
     })
+  }
+
+  private isDir (filePath: string): boolean {
+    return fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()
   }
 }
 

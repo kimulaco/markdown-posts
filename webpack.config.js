@@ -2,12 +2,14 @@ const path = require('path')
 
 module.exports = {
   mode: 'production',
+  target: 'node',
   entry: './src/markdown-post-parser.ts',
   output: {
+    library: 'MarkdownPostParser',
+    libraryTarget: 'commonjs2',
     filename: 'markdown-post-parser.js',
     path: path.join(__dirname, 'dist')
   },
-  target: 'node',
   module: {
     rules: [
       {

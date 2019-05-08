@@ -5,8 +5,5 @@
     "sourceMap": true,
     "removeComments": false,
     "esModuleInterop": true
-  },
-  "exclude": [
-    "node_modules"
-  ]
+  }
 }

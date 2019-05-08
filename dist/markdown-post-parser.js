@@ -20,6 +20,7 @@ class MarkdownPosts {
         html: true
       }
     }, option || {})
+    this.watcher = null
   }
 
   async parse () {
@@ -34,8 +35,41 @@ class MarkdownPosts {
 
   async generate () {
     const blog = await this.parse()
+    const result = await this.writeFile(
+      this.option.output,
+      JSON.stringify(blog, null, '  ')
+    )
 
-    await this.writeFile(this.option.output, JSON.stringify(blog, null, '  '))
+    return result
+  }
+
+  watch () {
+    console.log('Watch start')
+
+    this.watcher = fs.watch(this.option.input, {
+      recursive: true
+    }, (eventType, fileName) => {
+      if (fileName) {
+        console.log(`${eventType} - ${fileName}`)
+        this.generate().then((result) => {
+          console.log(result.path)
+          console.log('')
+        })
+      }
+    })
+
+    this.watcher.on('error', (error) => {
+      this.unwatch(error)
+    })
+  }
+
+  unwatch (error) {
+    if (error) console.error(error)
+    console.log('Watch stop')
+    this.watcher.close()
+    this.watcher = null
+    process.kill(process.pid, 'SIGHUP')
+    process.exit(0)
   }
 
   generateTags (posts) {

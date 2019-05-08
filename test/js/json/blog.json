@@ -13,7 +13,7 @@
         "CSS",
         "JavaScript"
       ],
-      "body": "<h2>overview</h2>\n<p>text</p>\n",
+      "body": "<h2>overview</h2>\n<p>text</p>\n<ul>\n<li>list item</li>\n<li>list item</li>\n<li>list item</li>\n</ul>\n",
       "resource": [
         "test/src/post-01/example.png"
       ]

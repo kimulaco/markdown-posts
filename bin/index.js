@@ -7,6 +7,7 @@ let option = {}
 
 program
   .version(pkg.version)
+  .option('-w, --watch', 'Watch mode.')
   .option('-m, --main [value]', 'Main markdown file name.')
   .option('-i, --input [value]', 'Input directory.')
   .option('-o, --output [value]', 'Output directory.')
@@ -20,4 +21,8 @@ if (program.static) option.static = program.static
 
 const markdownPostParser = new MarkdownPostParser(option)
 
-markdownPostParser.generate()
+if (program.watch) {
+  markdownPostParser.watch()
+} else {
+  markdownPostParser.generate()
+}

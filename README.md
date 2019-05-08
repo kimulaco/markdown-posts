@@ -34,7 +34,8 @@ src
 │  ├─ index.md
 │  └─ example.png
 ├─ post-02
-│  └─index.md
+│  ├─index.md
+│  └─ example.png
 └─ post-02
    └─index.md
 ```
@@ -49,16 +50,21 @@ id: post-01
 title: Example Post
 description: test post
 created_at: "2019-04-01"
-updated_at: "2019-04-02"
+updated_at: "2019-04-01"
 tags:
-  - HTML
-  - CSS
-  - JavaScript
+    - HTML
+    - CSS
+    - JavaScript
 ---
 
 ## overview
 
-text
+text text
+
+- list item
+- list item
+- list item
+- list item
 ```
 
 ### JSON format
@@ -68,8 +74,8 @@ text
   // All posts
   "posts": [
     {
-      "path": "test/src/post-01",
-      "main": "test/src/post-01/index.md",
+      "path": "src/post-01",
+      "main": "src/post-01/index.md",
       "id": "post-01",
       "title": "Example Post",
       "description": "test post",
@@ -82,7 +88,7 @@ text
       ],
       "body": "<h2>overview</h2>\n<p>text</p>\n",
       "resource": [
-        "test/src/post-01/example.png"
+        "src/post-01/example.png"
       ]
     },
     ...
@@ -94,6 +100,12 @@ text
     "CSS",
     "JavaScript",
     ...
+  ],
+
+  // All resources
+  "resources": [
+    "src/post-01/example.png",
+    "src/post-02/example.png"
   ]
 ```
 
@@ -113,7 +125,6 @@ yarn test
 ## ToDo
 
 - Test code.
-- Copy static resource.
 - Publish npm.
 
 ## License

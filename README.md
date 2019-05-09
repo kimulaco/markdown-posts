@@ -1,5 +1,9 @@
 # markdown-post-parser
 
+[![npm version](https://badge.fury.io/js/markdown-post-parser.svg)](https://badge.fury.io/js/markdown-post-parser)
+[![](https://travis-ci.org/kimulaco/markdown-post-parser.svg?branch=master)](https://travis-ci.org/kimulaco/markdown-post-parser)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+
 Parser for building blogs in Markdown.
 
 ## Install

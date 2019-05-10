@@ -1,24 +1,43 @@
 import MarkdownPostParser from '../src/markdown-post-parser'
 import { isEqualObject, toAbsPath } from './test-util'
 
-const TEST_OPTION = {
+const testOption = {
   main: 'index.md',
   input: './test/src',
   output: './test/dist/api/blog.json',
   static: './test/dist/api/static'
 }
 
-describe('generate()', () => {
+describe('MarkdownPostParser', () => {
   let markdownPostParser: any
-  let result: any
 
   beforeAll(async () => {
-    markdownPostParser = new MarkdownPostParser(TEST_OPTION)
-    result = await markdownPostParser.generate()
+    markdownPostParser = new MarkdownPostParser(testOption)
   })
 
-  test('"result.data" and "output json" data are equal', () => {
-    const outputData = require(toAbsPath(result.path))
-    expect(isEqualObject(result.data, outputData)).toBeTruthy()
+  describe('parse()', () => {
+    let result: any
+
+    beforeAll(async () => {
+      result = await markdownPostParser.parse()
+    })
+
+    test('"result" and "option.output json" data are equal', () => {
+      const outputData = require(toAbsPath(testOption.output))
+      expect(isEqualObject(result, outputData)).toBeTruthy()
+    })
+  })
+
+  describe('generate()', () => {
+    let result: any
+
+    beforeAll(async () => {
+      result = await markdownPostParser.generate()
+    })
+
+    test('"result.data" and "option.output json" data are equal', () => {
+      const outputData = require(toAbsPath(testOption.output))
+      expect(isEqualObject(result.data, outputData)).toBeTruthy()
+    })
   })
 })

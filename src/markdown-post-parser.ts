@@ -4,30 +4,15 @@ import glob from 'glob'
 import _ from 'lodash'
 import MarkdownIt from 'markdown-it'
 import meta from 'markdown-it-meta'
-
-type Post = any
-type Posts = Post[]
-type Tags = string[]
-type Resouces = string[]
-
-interface Blog {
-  posts: Posts
-  tags: Tags
-  resources: Resouces
-}
-
-interface Result {
-  path: string
-  data: Blog
-}
-
-interface Option {
-  main?: string
-  input?: string
-  output?: string
-  static?: string
-  markdownIt?: any
-}
+import {
+  Post,
+  Posts,
+  Tags,
+  Resouces,
+  Blog,
+  Result,
+  Option
+} from './types'
 
 /**
  * MarkdownPostParser

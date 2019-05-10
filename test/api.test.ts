@@ -9,8 +9,8 @@ const TEST_OPTION = {
 }
 
 describe('generate()', () => {
-  let markdownPostParser
-  let result
+  let markdownPostParser: any
+  let result: any
 
   beforeAll(async () => {
     markdownPostParser = new MarkdownPostParser(TEST_OPTION)

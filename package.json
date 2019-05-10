@@ -19,7 +19,7 @@
     "test": "npm-run-all -s lint test:jest",
     "test:jest": "jest",
     "test:cli": "mpp -i ./test/src -o ./test/dist/cli/blog.json -s ./test/dist/cli/static",
-    "lint": "eslint -c ./.eslintrc.js src/**.ts test/**/**.ts bin/**.js webpack.config.js",
+    "lint": "eslint -c .eslintrc.js src/**.ts test/**/**.ts bin/**.js webpack.config.js",
     "self-link": "npm link && npm link markdown-post-parser"
   },
   "dependencies": {

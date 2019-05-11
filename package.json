@@ -1,6 +1,6 @@
 {
   "name": "markdown-post-parser",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Parser for building blogs in Markdown.",
   "keywords": [
     "markdown",
@@ -9,6 +9,12 @@
   ],
   "author": "kimulaco",
   "license": "MIT",
+  "homepage": "https://github.com/kimulaco/markdown-post-parser",
+  "bugs": "https://github.com/kimulaco/markdown-post-parser/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kimulaco/markdown-post-parser.git"
+  },
   "main": "dist/markdown-post-parser.js",
   "bin": {
     "mpp": "bin/mpp.js"

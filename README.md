@@ -1,7 +1,7 @@
 # markdown-post-parser
 
 [![npm version](https://badge.fury.io/js/markdown-post-parser.svg)](https://badge.fury.io/js/markdown-post-parser)
-[![Build Status](https://travis-ci.org/kimulaco/markdown-post-parser.svg?branch=master)](https://travis-ci.org/kimulaco/markdown-post-parser)
+[![Build Status](https://travis-ci.org/kimulaco/markdown-post-parser.svg)](https://travis-ci.org/kimulaco/markdown-post-parser)
 [![Coverage Status](https://coveralls.io/repos/github/kimulaco/markdown-post-parser/badge.svg)](https://coveralls.io/github/kimulaco/markdown-post-parser)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 

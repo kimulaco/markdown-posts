@@ -2,6 +2,7 @@ import fs from 'fs-extra'
 import path from 'path'
 import glob from 'glob'
 import _ from 'lodash'
+import removeMd from 'remove-markdown'
 import MarkdownIt from 'markdown-it'
 import meta from 'markdown-it-meta'
 import {
@@ -128,12 +129,17 @@ export default class MarkdownPostParser {
     const md: string = fs.readFileSync(mainPath).toString()
     const mdParser: any = this.initMdParser()
     const html: string = mdParser.render(md)
+    const text: string = removeMd(md)
 
     return {
       path: postPath,
       main: mainPath,
       ...mdParser.meta,
-      body: html,
+      body: {
+        md,
+        html,
+        text
+      },
       resource: await this.getResource(postPath, [
         postPath,
         mainPath

@@ -108,7 +108,11 @@ text text
         "CSS",
         "JavaScript"
       ],
-      "body": "<h2>overview</h2>\n<p>text</p>\n",
+      "body": {
+        "md": "...", // Markdown source
+        "html": "...", // HTML source
+        "text": "..." // Plane text source
+      },
       "resource": [
         "src/post-01/example.png"
       ]

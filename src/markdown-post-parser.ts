@@ -129,7 +129,7 @@ export default class MarkdownPostParser {
     const md: string = fs.readFileSync(mainPath).toString()
     const mdParser: any = this.initMdParser()
     const html: string = mdParser.render(md)
-    const text: string = removeMd(md)
+    const text: string = removeMd(md.replace(/---[\s\S]*---/gm, ''))
 
     return {
       path: postPath,

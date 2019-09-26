@@ -13,7 +13,11 @@
         "CSS",
         "JavaScript"
       ],
-      "body": "<h2>overview</h2>\n<p>text text</p>\n<ul>\n<li>list item</li>\n<li>list item</li>\n<li>list item</li>\n<li>list item</li>\n</ul>\n",
+      "body": {
+        "md": "---\nid: post-01\ntitle: Example Post\ndescription: test post\ncreated_at: \"2019-04-01\"\nupdated_at: \"2019-04-01\"\ntags:\n    - HTML\n    - CSS\n    - JavaScript\n---\n\n## overview\n\ntext text\n\n- list item\n- list item\n- list item\n- list item\n",
+        "html": "<h2>overview</h2>\n<p>text text</p>\n<ul>\n<li>list item</li>\n<li>list item</li>\n<li>list item</li>\n<li>list item</li>\n</ul>\n",
+        "text": "\noverview\n\ntext text\n\nlist item\nlist item\nlist item\nlist item\n"
+      },
       "resource": [
         "test/src/post-01/example.png"
       ]
@@ -31,7 +35,11 @@
         "CSS",
         "JavaScript"
       ],
-      "body": "<h1>post-02</h1>\n",
+      "body": {
+        "md": "---\nid: post-02\ntitle: Welcome to Markdown-it-meta\ndescription: test post2\ncreated_at: \"2019-04-01\"\nupdated_at: \"2019-04-01\"\ntags:\n    - HTML\n    - CSS\n    - JavaScript\n---\n\n# post-02\n",
+        "html": "<h1>post-02</h1>\n",
+        "text": "\npost-02\n"
+      },
       "resource": [
         "test/src/post-02/example.png"
       ]
@@ -49,7 +57,11 @@
         "CSS",
         "JavaScript"
       ],
-      "body": "<h1>post-03</h1>\n",
+      "body": {
+        "md": "---\nid: post-03\ntitle: Welcome to Markdown-it-meta\ndescription: test post\ncreated_at: \"2019-04-01\"\nupdated_at: \"2019-04-01\"\ntags:\n    - HTML\n    - CSS\n    - JavaScript\n---\n\n# post-03\n",
+        "html": "<h1>post-03</h1>\n",
+        "text": "\npost-03\n"
+      },
       "resource": []
     }
   ],

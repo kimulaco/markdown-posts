@@ -5,6 +5,8 @@
 [![Coverage Status](https://coveralls.io/repos/github/kimulaco/markdown-post-parser/badge.svg)](https://coveralls.io/github/kimulaco/markdown-post-parser)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
+**This package has been moved to [broc](https://github.com/kimulaco/broc). Please use [broc](https://github.com/kimulaco/broc).**
+
 Parser for building blogs in Markdown.
 
 ## Install
